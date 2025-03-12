@@ -18,7 +18,7 @@ export default function Checkout() {
   }
     // checkout total amount form(name,email,street,postal code, city) close submitorder
   return (
-    <Modal open={userProgressContext.progress === 'checkout'}>
+    <Modal open={userProgressContext.progress === 'checkout'}  onClose={handleClose}>
       <form>
         <h2>Checkout</h2>
         <p>Total amount to be paid:{currencyFormatter.format(cartTotal)}</p>
