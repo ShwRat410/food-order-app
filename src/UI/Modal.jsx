@@ -12,10 +12,10 @@ export default function Modal({children,open,className=''}) {
   },[open])
 
   return (
-    createPortal(()=>{
+    createPortal(
         <dialog ref={dialog} className={`modal ${className}`}>
             {children}
         </dialog>
-    },document.getElementById('modal'))
+    ,document.getElementById('modal'))
   )
 }
