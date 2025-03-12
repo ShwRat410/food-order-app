@@ -14,6 +14,11 @@ export default function Cart() {
   console.log("I M IN CART.JSX")
   console.log(cartCtx.items)
 
+  
+  function handleCloseCart(){
+    userProgressContext.hideCart()
+  }
+
   return (
 // name +qualtity- item <button> back and checkout
     <Modal className="cart" open={userProgressContext.progress === 'cart'}>
@@ -33,8 +38,8 @@ export default function Cart() {
         </ul>
         <p className="cart-total">Total - {currencyFormatter.format(cartTotal)}</p>
         <p className='modal-actions'>
-            <Button textOnly>Close</Button>
-            <Button>Checkout</Button>
+            <Button onClick={handleCloseCart} textOnly>Close</Button>
+            {cartCtx.items.length>0 && <Button>Checkout</Button>}
         </p>
     </Modal>  )
 }
