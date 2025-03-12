@@ -22,6 +22,17 @@ export default function Checkout() {
     const fd = new FormData(event.target)
     const enteredData = Object.fromEntries(fd.entries())
     console.log(enteredData)
+    const response = fetch("http://localhost:3000/orders",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+            order:{
+                items:cartCtx.items,
+                customer:enteredData
+            }
+        })
+        
+     })
   }
     // checkout total amount form(name,email,street,postal code, city) close submitorder
   return (
@@ -33,7 +44,7 @@ export default function Checkout() {
         <Input label="Email" id="email" type="email"></Input>
         <Input label="Street" id="street" type="text"></Input>
         <div className='control-row'>
-            <Input label="Postal Code" id="postal" type="number"></Input>
+            <Input label="Postal Code" id="postal-code" type="number"></Input>
             <Input label="City" id="city" type="text"></Input>
         </div>
         <p className='modal-actions'>
